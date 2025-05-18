@@ -28,7 +28,6 @@ class ConversationHomeViewModel: NSObject, ObservableObject, AVAudioPlayerDelega
         
     private var api: LLMClient
     
-    
     init(api: LLMClient) {
         self.api = api
         

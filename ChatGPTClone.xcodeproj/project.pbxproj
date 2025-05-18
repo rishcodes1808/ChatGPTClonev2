@@ -11,8 +11,19 @@
 		DBEAD9682DD83BFA00952C49 /* Highlighter in Frameworks */ = {isa = PBXBuildFile; productRef = DBEAD9672DD83BFA00952C49 /* Highlighter */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		DBEADABE2DD976E900952C49 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DBEAD9292DD79E1500952C49 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DBEAD9302DD79E1500952C49;
+			remoteInfo = ChatGPTClone;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		DBEAD9312DD79E1500952C49 /* ChatGPTClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatGPTClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBEADABA2DD976E900952C49 /* ChatGPTCloneUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatGPTCloneUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -34,6 +45,11 @@
 			path = ChatGPTClone;
 			sourceTree = "<group>";
 		};
+		DBEADABB2DD976E900952C49 /* ChatGPTCloneUnitTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ChatGPTCloneUnitTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +62,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DBEADAB72DD976E900952C49 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -53,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				DBEAD9332DD79E1500952C49 /* ChatGPTClone */,
+				DBEADABB2DD976E900952C49 /* ChatGPTCloneUnitTests */,
 				DBEAD9322DD79E1500952C49 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				DBEAD9312DD79E1500952C49 /* ChatGPTClone.app */,
+				DBEADABA2DD976E900952C49 /* ChatGPTCloneUnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -92,6 +117,29 @@
 			productReference = DBEAD9312DD79E1500952C49 /* ChatGPTClone.app */;
 			productType = "com.apple.product-type.application";
 		};
+		DBEADAB92DD976E900952C49 /* ChatGPTCloneUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DBEADAC22DD976E900952C49 /* Build configuration list for PBXNativeTarget "ChatGPTCloneUnitTests" */;
+			buildPhases = (
+				DBEADAB62DD976E900952C49 /* Sources */,
+				DBEADAB72DD976E900952C49 /* Frameworks */,
+				DBEADAB82DD976E900952C49 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DBEADABF2DD976E900952C49 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				DBEADABB2DD976E900952C49 /* ChatGPTCloneUnitTests */,
+			);
+			name = ChatGPTCloneUnitTests;
+			packageProductDependencies = (
+			);
+			productName = ChatGPTCloneUnitTests;
+			productReference = DBEADABA2DD976E900952C49 /* ChatGPTCloneUnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -104,6 +152,10 @@
 				TargetAttributes = {
 					DBEAD9302DD79E1500952C49 = {
 						CreatedOnToolsVersion = 16.3;
+					};
+					DBEADAB92DD976E900952C49 = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = DBEAD9302DD79E1500952C49;
 					};
 				};
 			};
@@ -126,12 +178,20 @@
 			projectRoot = "";
 			targets = (
 				DBEAD9302DD79E1500952C49 /* ChatGPTClone */,
+				DBEADAB92DD976E900952C49 /* ChatGPTCloneUnitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		DBEAD92F2DD79E1500952C49 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBEADAB82DD976E900952C49 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -148,7 +208,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DBEADAB62DD976E900952C49 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DBEADABF2DD976E900952C49 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DBEAD9302DD79E1500952C49 /* ChatGPTClone */;
+			targetProxy = DBEADABE2DD976E900952C49 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		DBEAD9402DD79E1700952C49 /* Debug */ = {
@@ -345,6 +420,55 @@
 			};
 			name = Release;
 		};
+		DBEADAC02DD976E900952C49 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M5757NXZKD;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = test.ChatGPTCloneUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChatGPTClone.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ChatGPTClone";
+			};
+			name = Debug;
+		};
+		DBEADAC12DD976E900952C49 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M5757NXZKD;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = test.ChatGPTCloneUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChatGPTClone.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ChatGPTClone";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -362,6 +486,15 @@
 			buildConfigurations = (
 				DBEAD9432DD79E1700952C49 /* Debug */,
 				DBEAD9442DD79E1700952C49 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DBEADAC22DD976E900952C49 /* Build configuration list for PBXNativeTarget "ChatGPTCloneUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DBEADAC02DD976E900952C49 /* Debug */,
+				DBEADAC12DD976E900952C49 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
