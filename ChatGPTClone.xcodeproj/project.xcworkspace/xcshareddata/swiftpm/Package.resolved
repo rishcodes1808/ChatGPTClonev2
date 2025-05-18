@@ -1,0 +1,33 @@
+{
+  "originHash" : "46cb8a31cabc03bb45802d171c50c4020dd17af781af993bd9797d149dc28365",
+  "pins" : [
+    {
+      "identity" : "highlighterswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/alfianlosari/HighlighterSwift",
+      "state" : {
+        "revision" : "6d697f875a064dda825d943fe7f6b53edea08fe8",
+        "version" : "1.0.0"
+      }
+    },
+    {
+      "identity" : "swift-cmark",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-cmark.git",
+      "state" : {
+        "revision" : "b022b08312decdc46585e0b3440d97f6f22ef703",
+        "version" : "0.6.0"
+      }
+    },
+    {
+      "identity" : "swift-markdown",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-markdown",
+      "state" : {
+        "revision" : "ea79e83c8744d2b50b0dc2d5bbd1e857e1253bf9",
+        "version" : "0.6.0"
+      }
+    }
+  ],
+  "version" : 3
+}
