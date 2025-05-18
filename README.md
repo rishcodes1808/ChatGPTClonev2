@@ -44,7 +44,7 @@ Jump Chat is an iOS SwiftUI application that lets you chat with OpenAI’s GPT m
    git clone https://github.com/your-username/ChatGPTClone.git
    cd ChatGPTClone
 
-2. **Clone the repo**
+2. **Add your OpenAI API Key**
 Create a file Secrets.xcconfig in the project root (not committed to Git):
 
 OPENAI_API_KEY = sk-YOUR_REAL_KEY
