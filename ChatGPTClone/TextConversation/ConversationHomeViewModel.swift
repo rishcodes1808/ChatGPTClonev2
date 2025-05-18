@@ -351,6 +351,8 @@ extension ConversationHomeViewModel {
         isVoiceConversation = conversation.isVoice
         messages.removeAll()
         
+        api.resetHistory()
+        
         do {
             let entities = try repository.fetchMessages(for: id)
             print("Fetched entities \(entities.count) for id \(id)")
@@ -393,14 +395,17 @@ extension ConversationHomeViewModel {
                 
                 let responseType: MessageRowType? = {
                     if let results = aiParserResults, !results.isEmpty {
-                        let full = results.map { String($0.attributedString.characters) }.joined()
-                        guard !full.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
-                            return nil
-                        }
+                        let full = results
+                            .map { String($0.attributedString.characters) }
+                            .joined()
+                            .trimmingCharacters(in: .whitespacesAndNewlines)
+                        guard !full.isEmpty else { return nil }
                         return .attributed(.init(string: full, results: results))
                     }
-                    if let plain = aiEnt?.text,
-                       !plain.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                    if let plain = aiEnt?.text?
+                        .trimmingCharacters(in: .whitespacesAndNewlines),
+                       !plain.isEmpty
+                    {
                         return .rawText(plain)
                     }
                     return nil
@@ -411,19 +416,31 @@ extension ConversationHomeViewModel {
                     continue
                 }
                 
-                // now append the complete row
+                let userText = userEnt.text ?? ""
+                api.appendHistory(role: "user", content: userText)
+                
+                let aiText: String
+                switch resp {
+                case .rawText(let t):
+                    aiText = t
+                case .attributed(let out):
+                    aiText = out.string
+                }
+                
+                api.appendHistory(role: "assistant", content: aiText)
+                
                 let row = MessageRow(
                     id: userEnt.id ?? UUID(),
                     isInteracting: false,
-                    send: .rawText(userEnt.text ?? ""),
+                    send: .rawText(userText),
                     response: resp,
                     responseError: nil
                 )
                 messages.append(row)
                 
-                // advance by 2 if we consumed an AI, else by 1
                 i += (aiEnt != nil ? 2 : 1)
             }
+            
         } catch {
             print("Failed to load conversation \(id):", error)
         }
