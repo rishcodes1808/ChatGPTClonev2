@@ -9,7 +9,7 @@ import Foundation
 
 public enum PlistHelper {
     public enum Key: String {
-        case openAIKey = "OPEN_AI_KEY"
+        case openAIKey = "OpenAI_API_KEY"
     }
 
     public static func infoForKey(_ key: Key) -> String {
