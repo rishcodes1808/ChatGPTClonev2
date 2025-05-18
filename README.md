@@ -51,6 +51,7 @@ OPENAI_API_KEY = sk-YOUR_REAL_KEY
 
 ## Project Structure
 
+```text
 ChatGPTClone/
 ├─ AppDelegate.swift
 ├─ Assets.xcassets
