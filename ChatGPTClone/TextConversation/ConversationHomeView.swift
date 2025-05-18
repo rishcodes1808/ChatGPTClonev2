@@ -11,7 +11,7 @@ import AVKit
 struct ConversationHomeView: View {
         
     @Environment(\.colorScheme) var colorScheme
-    @StateObject var vm = ConversationHomeViewModel(api: OpenAIAPI(apiKey: ""))
+    @StateObject var vm = ConversationHomeViewModel(api: OpenAIAPI(apiKey: openAIKey))
     @FocusState var isTextFieldFocused: Bool
     @State private var showVoiceInputView = false
     

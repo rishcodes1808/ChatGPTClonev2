@@ -15,9 +15,22 @@
 		DBEAD9312DD79E1500952C49 /* ChatGPTClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatGPTClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		DBEADA3B2DD974D100952C49 /* Exceptions for "ChatGPTClone" folder in "ChatGPTClone" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = DBEAD9302DD79E1500952C49 /* ChatGPTClone */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		DBEAD9332DD79E1500952C49 /* ChatGPTClone */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				DBEADA3B2DD974D100952C49 /* Exceptions for "ChatGPTClone" folder in "ChatGPTClone" target */,
+			);
 			path = ChatGPTClone;
 			sourceTree = "<group>";
 		};
@@ -263,6 +276,7 @@
 				DEVELOPMENT_TEAM = M5757NXZKD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ChatGPTClone/Info.plist;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need to be able listen to your speech";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -302,6 +316,7 @@
 				DEVELOPMENT_TEAM = M5757NXZKD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ChatGPTClone/Info.plist;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need to be able listen to your speech";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;

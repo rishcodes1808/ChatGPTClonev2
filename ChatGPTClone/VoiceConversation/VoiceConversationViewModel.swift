@@ -11,7 +11,7 @@ import Observation
 
 class VoiceConversationViewModel: NSObject, ObservableObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     
-    let client = OpenAIAPI(apiKey: "")
+    let client = OpenAIAPI(apiKey: openAIKey)
     var audioPlayer: AVAudioPlayer?
     var audioRecorder: AVAudioRecorder?
     var recordingSession = AVAudioSession.sharedInstance()
