@@ -109,6 +109,7 @@ class ConversationHomeViewModel: NSObject, ObservableObject, AVAudioPlayerDelega
         HapticsManager.lightFeedback()
         
         var latestResults: [ParserResult] = []
+        var didFireFirstTokenHaptic = false
         
         do {
             let parsingTask = ResponseParsingTask()
@@ -123,6 +124,12 @@ class ConversationHomeViewModel: NSObject, ObservableObject, AVAudioPlayerDelega
             
             let stream = try await api.sendMessageStream(text: text)
             for try await chunk in stream {
+                
+                if !didFireFirstTokenHaptic {
+                    HapticsManager.lightFeedback()
+                    didFireFirstTokenHaptic = true
+                }
+                
                 streamText += chunk
                 bufferCount += chunk.count
                 

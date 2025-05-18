@@ -20,6 +20,3 @@ public enum PlistHelper {
         return value
     }
 }
-
-
-var openAIKey = PlistHelper.infoForKey(.openAIKey)

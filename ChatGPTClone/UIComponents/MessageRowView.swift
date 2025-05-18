@@ -59,9 +59,16 @@ struct MessageRowView: View {
                     case .attributed(let output):
                         attributedView(results: output.results)
                     case .rawText(let text):
-                        Text(text)
-                            .multilineTextAlignment(.leading)
-                            .textSelection(.enabled)
+                        if isUser {
+                            Text(text.trimmingCharacters(in: .whitespacesAndNewlines))
+                                .multilineTextAlignment(.leading)
+                                .textSelection(.enabled)
+                        } else {
+                            Text(text)
+                                .multilineTextAlignment(.leading)
+                                .textSelection(.enabled)
+                        }
+                        
                     }
                 }
                 
