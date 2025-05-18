@@ -346,29 +346,30 @@ extension ConversationHomeViewModel {
     @MainActor
     func loadConversation(conversation: ConversationEntity) {
         guard let id = conversation.id else { return }
-
-        conversationID = conversation.id
+        
+        conversationID = id
         isVoiceConversation = conversation.isVoice
         messages.removeAll()
-
+        
         do {
             let entities = try repository.fetchMessages(for: id)
             print("Fetched entities \(entities.count) for id \(id)")
-
+            
             var i = 0
             while i < entities.count {
                 let userEnt = entities[i]
-                // Skip any out-of-order AI entries
                 guard userEnt.isUser else {
                     i += 1
                     continue
                 }
                 
-                let aiEnt: MessageEntity? =
-                    (i + 1 < entities.count && !entities[i + 1].isUser)
-                      ? entities[i + 1]
-                      : nil
-
+                let aiEnt: MessageEntity? = {
+                    let next = i + 1
+                    return next < entities.count && !entities[next].isUser
+                    ? entities[next]
+                    : nil
+                }()
+                
                 var aiParserResults: [ParserResult]? = nil
                 if let ai = aiEnt {
                     let rawSet = ai.mutableSetValue(forKey: "parserResults").allObjects
@@ -376,43 +377,51 @@ extension ConversationHomeViewModel {
                     let sorted = prEntities.sorted { $0.orderIndex < $1.orderIndex }
                     aiParserResults = try? sorted.map { pre in
                         guard
-                          let data = pre.attributedData,
-                          let attr = try? JSONDecoder().decode(AttributedString.self, from: data)
+                            let data = pre.attributedData,
+                            let attr = try? JSONDecoder().decode(AttributedString.self, from: data)
                         else {
-                          throw NSError(domain: "DecodeError", code: 0)
+                            throw NSError(domain: "DecodeError", code: 0)
                         }
                         return ParserResult(
-                          id: pre.id,
-                          attributedString: attr,
-                          isCodeBlock: pre.isCodeBlock,
-                          codeBlockLanguage: pre.codeBlockLanguage
+                            id: pre.id,
+                            attributedString: attr,
+                            isCodeBlock: pre.isCodeBlock,
+                            codeBlockLanguage: pre.codeBlockLanguage
                         )
                     }
                 }
-
+                
                 let responseType: MessageRowType? = {
-                    if let results = aiParserResults,
-                       !results.isEmpty
-                    {
-                        let full = results.map { String($0.attributedString.characters) }
-                                          .joined()
+                    if let results = aiParserResults, !results.isEmpty {
+                        let full = results.map { String($0.attributedString.characters) }.joined()
+                        guard !full.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+                            return nil
+                        }
                         return .attributed(.init(string: full, results: results))
-                    } else if let plain = aiEnt?.text {
-                        return .rawText(plain)
-                    } else {
-                        return nil
                     }
+                    if let plain = aiEnt?.text,
+                       !plain.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                        return .rawText(plain)
+                    }
+                    return nil
                 }()
-
+                
+                guard let resp = responseType else {
+                    i += (aiEnt != nil ? 2 : 1)
+                    continue
+                }
+                
+                // now append the complete row
                 let row = MessageRow(
                     id: userEnt.id ?? UUID(),
                     isInteracting: false,
                     send: .rawText(userEnt.text ?? ""),
-                    response: responseType,
+                    response: resp,
                     responseError: nil
                 )
                 messages.append(row)
-
+                
+                // advance by 2 if we consumed an AI, else by 1
                 i += (aiEnt != nil ? 2 : 1)
             }
         } catch {
